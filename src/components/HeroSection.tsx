@@ -36,6 +36,12 @@ export const HeroSection = ({ onGenerate, isGenerating }: HeroSectionProps) => {
   const handleSubmit = () => {
     if (description.trim()) {
       onGenerate(description);
+      setTimeout(() => {
+        const outputSection = document.querySelector('[data-output-section]');
+        if (outputSection) {
+          outputSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     }
   };
 
@@ -60,9 +66,9 @@ export const HeroSection = ({ onGenerate, isGenerating }: HeroSectionProps) => {
         {/* Input Area */}
         <div className="glass-panel p-8 space-y-6 animate-scale-in">
           <div className="flex items-start gap-4">
-            <Lightbulb className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
+            <Lightbulb className="w-6 h-6 text-cyan-400 mt-1 flex-shrink-0" />
             <Select onValueChange={handleExampleSelect}>
-              <SelectTrigger className="w-full md:w-64 bg-muted/50 border-border">
+              <SelectTrigger className="w-full md:w-64 bg-slate-800/70 border-2 border-cyan-400/50 focus:border-cyan-300 shadow-lg shadow-cyan-400/25">
                 <SelectValue placeholder="Try an example..." />
               </SelectTrigger>
               <SelectContent>
@@ -79,14 +85,14 @@ export const HeroSection = ({ onGenerate, isGenerating }: HeroSectionProps) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Describe any math or CS concept here...&#10;&#10;Examples:&#10;• Show bubble sort on [4,2,7,1,3]&#10;• Explain vector addition with two arrows&#10;• Demonstrate Pythagoras theorem visually"
-            className="min-h-[200px] text-lg bg-muted/30 border-border focus:border-primary resize-none"
+            className="min-h-[200px] text-lg bg-slate-800/50 border-2 border-cyan-400/50 focus:border-cyan-300 resize-none shadow-lg shadow-cyan-400/25 focus:shadow-cyan-300/35"
           />
 
           <Button
             size="lg"
             onClick={handleSubmit}
             disabled={isGenerating || !description.trim()}
-            className="w-full md:w-auto px-12 py-6 text-lg font-semibold bg-gradient-primary hover:opacity-90 transition-all animate-glow"
+            className="w-full md:w-auto px-12 py-6 text-lg font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 transition-all shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
           >
             {isGenerating ? (
               <>
@@ -102,24 +108,7 @@ export const HeroSection = ({ onGenerate, isGenerating }: HeroSectionProps) => {
           </Button>
         </div>
 
-        {/* Features */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-8">
-          {[
-            { icon: "⚡", title: "Instant", desc: "Scene JSON in ~800ms" },
-            { icon: "🎨", title: "15+ Templates", desc: "Sort, graphs, math & more" },
-            { icon: "📹", title: "Smooth Canvas", desc: "60fps animations" },
-            { icon: "💾", title: "Export GIF", desc: "Download animations" },
-          ].map((feature, i) => (
-            <div
-              key={i}
-              className="glass-panel p-6 text-center space-y-2 hover:scale-105 transition-transform"
-            >
-              <div className="text-4xl">{feature.icon}</div>
-              <h3 className="font-semibold text-foreground">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground">{feature.desc}</p>
-            </div>
-          ))}
-        </div>
+
       </div>
     </section>
   );

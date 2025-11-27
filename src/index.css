@@ -17,16 +17,16 @@ All colors MUST be HSL.
     --popover: 240 8% 10%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 280 100% 70%;
+    --primary: 188 95% 52%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 340 100% 65%;
+    --secondary: 217 91% 60%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 240 5% 15%;
     --muted-foreground: 240 5% 65%;
 
-    --accent: 160 84% 48%;
+    --accent: 45 93% 58%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -38,8 +38,8 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
     
-    --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(340 100% 65%));
-    --gradient-accent: linear-gradient(135deg, hsl(160 84% 48%), hsl(200 98% 48%));
+    --gradient-primary: linear-gradient(135deg, hsl(188 95% 52%), hsl(217 91% 60%));
+    --gradient-accent: linear-gradient(135deg, hsl(188 95% 52%), hsl(217 91% 60%));
     --gradient-bg: linear-gradient(180deg, hsl(240 10% 6%), hsl(260 15% 10%));
     
     --glow-primary: 0 0 60px hsl(280 100% 70% / 0.5);
@@ -49,11 +49,11 @@ All colors MUST be HSL.
 
 @layer components {
   .glass-panel {
-    @apply bg-card/50 backdrop-blur-xl border border-border/50 rounded-xl shadow-2xl;
+    @apply bg-slate-900/50 backdrop-blur-xl border border-cyan-500/20 rounded-xl shadow-lg shadow-cyan-500/10;
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent;
   }
   
   .animate-glow {

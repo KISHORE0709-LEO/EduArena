@@ -45,7 +45,7 @@ export const AnimationGallery = ({ onSelect }: AnimationGalleryProps) => {
         {categories.map((category) => (
           <div key={category} className="space-y-4">
             <h3 className="text-xl font-semibold flex items-center gap-2">
-              <Badge variant="outline" className="text-sm">{category}</Badge>
+              <Badge variant="outline" className="text-sm border-cyan-400/70 text-cyan-300 shadow-md shadow-cyan-400/20">{category}</Badge>
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {templates
@@ -53,13 +53,13 @@ export const AnimationGallery = ({ onSelect }: AnimationGalleryProps) => {
                 .map((template) => (
                   <Card
                     key={template.id}
-                    className="glass-panel p-4 cursor-pointer hover:scale-105 transition-all hover:border-primary/50"
+                    className="bg-slate-900/70 border-2 border-cyan-400/60 hover:border-cyan-300 p-4 cursor-pointer hover:scale-105 transition-all rounded-xl shadow-xl shadow-cyan-400/30 hover:shadow-cyan-300/50"
                     onClick={() => onSelect(template.example)}
                   >
                     <div className="space-y-2">
                       <h4 className="font-semibold text-foreground">{template.title}</h4>
                       <p className="text-sm text-muted-foreground">{template.description}</p>
-                      <code className="text-xs bg-muted/50 px-2 py-1 rounded block">
+                      <code className="text-xs bg-slate-800/70 border border-cyan-400/50 px-2 py-1 rounded block text-cyan-200 shadow-sm shadow-cyan-400/20">
                         {template.example}
                       </code>
                     </div>

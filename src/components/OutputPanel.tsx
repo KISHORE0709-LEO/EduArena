@@ -26,7 +26,7 @@ export const OutputPanel = ({ inputText, scenes, stats }: OutputPanelProps) => {
   };
 
   return (
-    <section className="container mx-auto px-4 pb-16">
+    <section className="container mx-auto px-4 pb-16" data-output-section>
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Stats Banner */}
         <div className="glass-panel p-4 flex items-center justify-center gap-8 text-sm animate-fade-in">
