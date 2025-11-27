@@ -2,10 +2,31 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Sparkles } from "lucide-react";
+import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 const SignIn = () => {
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    
+    try {
+      await signInWithEmailAndPassword(auth, formData.email, formData.password);
+      navigate('/app');
+    } catch (error) {
+      console.error('Signin error:', error);
+      alert('Sign in failed. Please check your credentials.');
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-black flex items-center justify-center p-6">
       {/* Grid Background */}
@@ -37,13 +58,16 @@ const SignIn = () => {
         </CardHeader>
         
         <CardContent className="relative z-10 space-y-6">
-          <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); window.location.href = '/app'; }}>
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <Label htmlFor="email" className="text-gray-300">Email</Label>
               <Input
                 id="email"
                 type="email"
                 placeholder="Enter your email"
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                required
                 className="bg-slate-800/70 border-slate-600 text-white placeholder:text-gray-500 focus:border-cyan-400 focus:ring-cyan-400/20"
               />
             </div>
@@ -54,15 +78,19 @@ const SignIn = () => {
                 id="password"
                 type="password"
                 placeholder="Enter your password"
+                value={formData.password}
+                onChange={(e) => setFormData({...formData, password: e.target.value})}
+                required
                 className="bg-slate-800/70 border-slate-600 text-white placeholder:text-gray-500 focus:border-cyan-400 focus:ring-cyan-400/20"
               />
             </div>
             
             <Button 
               type="submit" 
-              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 shadow-lg shadow-cyan-500/25"
+              disabled={loading}
+              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 shadow-lg shadow-cyan-500/25 disabled:opacity-50"
             >
-              Sign In
+              {loading ? 'Signing In...' : 'Sign In'}
             </Button>
           </form>
           
