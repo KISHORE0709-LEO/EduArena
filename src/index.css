@@ -8,42 +8,42 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 25% 10%;
-    --foreground: 210 40% 98%;
+    --background: 240 10% 6%;
+    --foreground: 0 0% 98%;
 
-    --card: 220 20% 14%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 8% 10%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 220 20% 14%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 8% 10%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 188 95% 52%;
-    --primary-foreground: 220 25% 10%;
+    --primary: 280 100% 70%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 262 83% 58%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 340 100% 65%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 15% 20%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 27 96% 61%;
-    --accent-foreground: 220 25% 10%;
+    --accent: 160 84% 48%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 25%;
-    --input: 220 15% 20%;
-    --ring: 188 95% 52%;
+    --border: 240 8% 18%;
+    --input: 240 8% 12%;
+    --ring: 280 100% 70%;
 
     --radius: 0.75rem;
     
-    --gradient-primary: linear-gradient(135deg, hsl(188 95% 52%), hsl(262 83% 58%));
-    --gradient-accent: linear-gradient(135deg, hsl(27 96% 61%), hsl(340 82% 52%));
-    --gradient-bg: linear-gradient(180deg, hsl(220 25% 10%), hsl(220 30% 8%));
+    --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(340 100% 65%));
+    --gradient-accent: linear-gradient(135deg, hsl(160 84% 48%), hsl(200 98% 48%));
+    --gradient-bg: linear-gradient(180deg, hsl(240 10% 6%), hsl(260 15% 10%));
     
-    --glow-primary: 0 0 60px hsl(188 95% 52% / 0.4);
-    --glow-accent: 0 0 40px hsl(27 96% 61% / 0.3);
+    --glow-primary: 0 0 60px hsl(280 100% 70% / 0.5);
+    --glow-accent: 0 0 40px hsl(160 84% 48% / 0.4);
   }
 }
 
