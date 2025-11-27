@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Play, Pause, RotateCcw, Code2, Sparkles } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
+import { Play, Pause, RotateCcw, Code2, Sparkles, Download, Gauge } from "lucide-react";
 import { AnimationCanvas } from "@/components/AnimationCanvas";
 import { Scene } from "@/pages/Index";
+import { toast } from "sonner";
 
 interface OutputPanelProps {
   inputText: string;
@@ -17,6 +19,11 @@ interface OutputPanelProps {
 export const OutputPanel = ({ inputText, scenes, stats }: OutputPanelProps) => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [showJson, setShowJson] = useState(false);
+  const [playbackSpeed, setPlaybackSpeed] = useState(1);
+
+  const handleExport = () => {
+    toast.success("Export feature coming soon! 🎬");
+  };
 
   return (
     <section className="container mx-auto px-4 pb-16">
@@ -98,11 +105,37 @@ export const OutputPanel = ({ inputText, scenes, stats }: OutputPanelProps) => {
                 >
                   <RotateCcw className="w-4 h-4" />
                 </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={handleExport}
+                  className="border-primary/50 hover:bg-primary/10"
+                >
+                  <Download className="w-4 h-4" />
+                </Button>
               </div>
             </div>
 
             <div className="bg-muted/30 rounded-lg overflow-hidden">
-              <AnimationCanvas scenes={scenes} isPlaying={isPlaying} />
+              <AnimationCanvas scenes={scenes} isPlaying={isPlaying} speed={playbackSpeed} />
+            </div>
+
+            {/* Speed Control */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-sm">
+                <span className="flex items-center gap-2 text-muted-foreground">
+                  <Gauge className="w-4 h-4" />
+                  Speed: {playbackSpeed}x
+                </span>
+              </div>
+              <Slider
+                value={[playbackSpeed]}
+                onValueChange={(value) => setPlaybackSpeed(value[0])}
+                min={0.25}
+                max={2}
+                step={0.25}
+                className="w-full"
+              />
             </div>
           </Card>
         </div>

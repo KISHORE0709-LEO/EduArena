@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { OutputPanel } from "@/components/OutputPanel";
+import { AnimationGallery } from "@/components/AnimationGallery";
 import { toast } from "sonner";
 
 export interface Scene {
@@ -58,12 +60,14 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-bg relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-primary/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-accent/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
       <div className="relative z-10">
+        <Header />
+        
         <HeroSection 
           onGenerate={handleGenerate} 
           isGenerating={isGenerating}
@@ -75,6 +79,10 @@ const Index = () => {
             scenes={generatedData.scenes}
             stats={generatedData.stats}
           />
+        )}
+
+        {!generatedData && (
+          <AnimationGallery onSelect={handleGenerate} />
         )}
       </div>
     </div>

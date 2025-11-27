@@ -3,16 +3,46 @@ import { Scene } from "@/pages/Index";
 export const generateScenes = (description: string): Scene[] => {
   const lowerDesc = description.toLowerCase();
 
-  if (lowerDesc.includes("sort") || lowerDesc.includes("bubble")) {
+  // Sorting algorithms
+  if (lowerDesc.includes("bubble")) {
     return bubbleSortScenes();
-  } else if (lowerDesc.includes("vector")) {
+  } else if (lowerDesc.includes("merge")) {
+    return mergeSortScenes();
+  } else if (lowerDesc.includes("quick")) {
+    return quickSortScenes();
+  } else if (lowerDesc.includes("selection")) {
+    return selectionSortScenes();
+  }
+  
+  // Data structures
+  else if (lowerDesc.includes("linked list")) {
+    return linkedListScenes();
+  } else if (lowerDesc.includes("stack")) {
+    return stackScenes();
+  } else if (lowerDesc.includes("queue")) {
+    return queueScenes();
+  } else if (lowerDesc.includes("tree") || lowerDesc.includes("bst")) {
+    return binaryTreeScenes();
+  }
+  
+  // Graph algorithms
+  else if (lowerDesc.includes("bfs") || lowerDesc.includes("breadth")) {
+    return bfsScenes();
+  } else if (lowerDesc.includes("dfs") || lowerDesc.includes("depth")) {
+    return dfsScenes();
+  }
+  
+  // Math concepts
+  else if (lowerDesc.includes("vector")) {
     return vectorAdditionScenes();
   } else if (lowerDesc.includes("pythagoras") || lowerDesc.includes("theorem")) {
     return pythagorasScenes();
-  } else if (lowerDesc.includes("tree") || lowerDesc.includes("bst")) {
-    return binaryTreeScenes();
   } else if (lowerDesc.includes("matrix")) {
     return matrixMultiplyScenes();
+  } else if (lowerDesc.includes("derivative")) {
+    return derivativeScenes();
+  } else if (lowerDesc.includes("factorial")) {
+    return factorialScenes();
   }
 
   return defaultGraphScenes();
@@ -684,6 +714,277 @@ const matrixMultiplyScenes = (): Scene[] => {
         { objectId: 6, type: "fadeIn" },
         { objectId: 7, type: "fadeIn" },
       ],
+    },
+  ];
+};
+
+const mergeSortScenes = (): Scene[] => {
+  return [
+    {
+      id: 0,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "rect", x: 200, y: 200, width: 60, height: 120, color: "#22d3ee", label: "4", scale: 1 },
+        { id: 1, type: "rect", x: 280, y: 200, width: 60, height: 60, color: "#22d3ee", label: "2", scale: 1 },
+        { id: 2, type: "rect", x: 360, y: 200, width: 60, height: 210, color: "#22d3ee", label: "7", scale: 1 },
+        { id: 3, type: "text", x: 300, y: 100, label: "Merge Sort: Divide", color: "#22d3ee", size: 20 },
+      ],
+      actions: [{ objectId: 0, type: "fadeIn" }],
+    },
+    {
+      id: 1,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "rect", x: 200, y: 200, width: 60, height: 60, color: "#10b981", label: "2", scale: 1 },
+        { id: 1, type: "rect", x: 280, y: 200, width: 60, height: 120, color: "#10b981", label: "4", scale: 1 },
+        { id: 2, type: "rect", x: 360, y: 200, width: 60, height: 210, color: "#10b981", label: "7", scale: 1 },
+        { id: 3, type: "text", x: 300, y: 100, label: "Merge Sort: Sorted!", color: "#10b981", size: 20 },
+      ],
+      actions: [{ objectId: 0, type: "highlight" }],
+    },
+  ];
+};
+
+const quickSortScenes = (): Scene[] => {
+  const pivot = 4;
+  return [
+    {
+      id: 0,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "rect", x: 200, y: 200, width: 60, height: 120, color: "#f97316", label: "4", scale: 1 },
+        { id: 1, type: "rect", x: 280, y: 200, width: 60, height: 60, color: "#22d3ee", label: "2", scale: 1 },
+        { id: 2, type: "rect", x: 360, y: 200, width: 60, height: 210, color: "#22d3ee", label: "7", scale: 1 },
+        { id: 3, type: "text", x: 300, y: 100, label: "Quick Sort: Pivot = 4", color: "#f97316", size: 20 },
+      ],
+      actions: [{ objectId: 0, type: "highlight" }],
+    },
+    {
+      id: 1,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "rect", x: 200, y: 200, width: 60, height: 60, color: "#10b981", label: "2", scale: 1 },
+        { id: 1, type: "rect", x: 280, y: 200, width: 60, height: 120, color: "#10b981", label: "4", scale: 1 },
+        { id: 2, type: "rect", x: 360, y: 200, width: 60, height: 210, color: "#10b981", label: "7", scale: 1 },
+        { id: 3, type: "text", x: 300, y: 100, label: "Quick Sort: Sorted!", color: "#10b981", size: 20 },
+      ],
+      actions: [{ objectId: 1, type: "highlight" }],
+    },
+  ];
+};
+
+const selectionSortScenes = (): Scene[] => {
+  return [
+    {
+      id: 0,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "rect", x: 200, y: 200, width: 60, height: 120, color: "#22d3ee", label: "4", scale: 1 },
+        { id: 1, type: "rect", x: 280, y: 200, width: 60, height: 60, color: "#f97316", label: "2", scale: 1 },
+        { id: 2, type: "rect", x: 360, y: 200, width: 60, height: 210, color: "#22d3ee", label: "7", scale: 1 },
+        { id: 3, type: "text", x: 300, y: 100, label: "Selection Sort: Find Min", color: "#f97316", size: 20 },
+      ],
+      actions: [{ objectId: 1, type: "highlight" }],
+    },
+    {
+      id: 1,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "rect", x: 200, y: 200, width: 60, height: 60, color: "#10b981", label: "2", scale: 1 },
+        { id: 1, type: "rect", x: 280, y: 200, width: 60, height: 120, color: "#10b981", label: "4", scale: 1 },
+        { id: 2, type: "rect", x: 360, y: 200, width: 60, height: 210, color: "#10b981", label: "7", scale: 1 },
+        { id: 3, type: "text", x: 300, y: 100, label: "Selection Sort: Sorted!", color: "#10b981", size: 20 },
+      ],
+      actions: [{ objectId: 0, type: "highlight" }],
+    },
+  ];
+};
+
+const linkedListScenes = (): Scene[] => {
+  return [
+    {
+      id: 0,
+      duration: 1500,
+      objects: [
+        { id: 0, type: "circle", x: 150, y: 200, radius: 30, color: "#22d3ee", label: "1", scale: 1 },
+        { id: 1, type: "arrow", startX: 180, startY: 200, x: 270, y: 200, color: "#22d3ee", label: "" },
+        { id: 2, type: "circle", x: 300, y: 200, radius: 30, color: "#22d3ee", label: "2", scale: 1 },
+        { id: 3, type: "text", x: 300, y: 100, label: "Linked List", color: "#22d3ee", size: 20 },
+      ],
+      actions: [{ objectId: 0, type: "fadeIn" }],
+    },
+    {
+      id: 1,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "circle", x: 150, y: 200, radius: 30, color: "#22d3ee", label: "1", scale: 1 },
+        { id: 1, type: "arrow", startX: 180, startY: 200, x: 270, y: 200, color: "#22d3ee", label: "" },
+        { id: 2, type: "circle", x: 300, y: 200, radius: 30, color: "#22d3ee", label: "2", scale: 1 },
+        { id: 4, type: "arrow", startX: 330, startY: 200, x: 420, y: 200, color: "#f97316", label: "" },
+        { id: 5, type: "circle", x: 450, y: 200, radius: 30, color: "#f97316", label: "3", scale: 1 },
+        { id: 3, type: "text", x: 300, y: 100, label: "Insert Node 3", color: "#f97316", size: 20 },
+      ],
+      actions: [{ objectId: 5, type: "fadeIn" }],
+    },
+  ];
+};
+
+const stackScenes = (): Scene[] => {
+  return [
+    {
+      id: 0,
+      duration: 1500,
+      objects: [
+        { id: 0, type: "rect", x: 300, y: 300, width: 100, height: 50, color: "#22d3ee", label: "A", scale: 1 },
+        { id: 1, type: "text", x: 300, y: 100, label: "Stack: LIFO", color: "#22d3ee", size: 20 },
+      ],
+      actions: [{ objectId: 0, type: "fadeIn" }],
+    },
+    {
+      id: 1,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "rect", x: 300, y: 300, width: 100, height: 50, color: "#22d3ee", label: "A", scale: 1 },
+        { id: 2, type: "rect", x: 300, y: 240, width: 100, height: 50, color: "#a855f7", label: "B", scale: 1 },
+        { id: 3, type: "rect", x: 300, y: 180, width: 100, height: 50, color: "#f97316", label: "C", scale: 1 },
+        { id: 1, type: "text", x: 300, y: 100, label: "Push C", color: "#f97316", size: 20 },
+      ],
+      actions: [{ objectId: 3, type: "fadeIn" }],
+    },
+  ];
+};
+
+const queueScenes = (): Scene[] => {
+  return [
+    {
+      id: 0,
+      duration: 1500,
+      objects: [
+        { id: 0, type: "rect", x: 200, y: 200, width: 80, height: 50, color: "#22d3ee", label: "A", scale: 1 },
+        { id: 1, type: "text", x: 300, y: 100, label: "Queue: FIFO", color: "#22d3ee", size: 20 },
+      ],
+      actions: [{ objectId: 0, type: "fadeIn" }],
+    },
+    {
+      id: 1,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "rect", x: 200, y: 200, width: 80, height: 50, color: "#22d3ee", label: "A", scale: 1 },
+        { id: 2, type: "rect", x: 300, y: 200, width: 80, height: 50, color: "#a855f7", label: "B", scale: 1 },
+        { id: 3, type: "rect", x: 400, y: 200, width: 80, height: 50, color: "#f97316", label: "C", scale: 1 },
+        { id: 1, type: "text", x: 300, y: 100, label: "Enqueue C", color: "#f97316", size: 20 },
+      ],
+      actions: [{ objectId: 3, type: "fadeIn" }],
+    },
+  ];
+};
+
+const bfsScenes = (): Scene[] => {
+  return [
+    {
+      id: 0,
+      duration: 1500,
+      objects: [
+        { id: 0, type: "circle", x: 300, y: 150, radius: 30, color: "#f97316", label: "A", scale: 1 },
+        { id: 1, type: "circle", x: 200, y: 250, radius: 30, color: "#22d3ee", label: "B", scale: 1 },
+        { id: 2, type: "circle", x: 400, y: 250, radius: 30, color: "#22d3ee", label: "C", scale: 1 },
+        { id: 3, type: "line", startX: 300, startY: 180, x: 220, y: 230, color: "#22d3ee", width: 2 },
+        { id: 4, type: "line", startX: 300, startY: 180, x: 380, y: 230, color: "#22d3ee", width: 2 },
+        { id: 5, type: "text", x: 300, y: 80, label: "BFS: Start at A", color: "#f97316", size: 18 },
+      ],
+      actions: [{ objectId: 0, type: "highlight" }],
+    },
+    {
+      id: 1,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "circle", x: 300, y: 150, radius: 30, color: "#10b981", label: "A", scale: 1 },
+        { id: 1, type: "circle", x: 200, y: 250, radius: 30, color: "#f97316", label: "B", scale: 1 },
+        { id: 2, type: "circle", x: 400, y: 250, radius: 30, color: "#f97316", label: "C", scale: 1 },
+        { id: 3, type: "line", startX: 300, startY: 180, x: 220, y: 230, color: "#22d3ee", width: 2 },
+        { id: 4, type: "line", startX: 300, startY: 180, x: 380, y: 230, color: "#22d3ee", width: 2 },
+        { id: 5, type: "text", x: 300, y: 80, label: "BFS: Visit B & C", color: "#f97316", size: 18 },
+      ],
+      actions: [{ objectId: 1, type: "highlight" }],
+    },
+  ];
+};
+
+const dfsScenes = (): Scene[] => {
+  return [
+    {
+      id: 0,
+      duration: 1500,
+      objects: [
+        { id: 0, type: "circle", x: 300, y: 150, radius: 30, color: "#f97316", label: "A", scale: 1 },
+        { id: 1, type: "circle", x: 200, y: 250, radius: 30, color: "#22d3ee", label: "B", scale: 1 },
+        { id: 2, type: "circle", x: 400, y: 250, radius: 30, color: "#22d3ee", label: "C", scale: 1 },
+        { id: 3, type: "line", startX: 300, startY: 180, x: 220, y: 230, color: "#22d3ee", width: 2 },
+        { id: 4, type: "line", startX: 300, startY: 180, x: 380, y: 230, color: "#22d3ee", width: 2 },
+        { id: 5, type: "text", x: 300, y: 80, label: "DFS: Start at A", color: "#f97316", size: 18 },
+      ],
+      actions: [{ objectId: 0, type: "highlight" }],
+    },
+    {
+      id: 1,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "circle", x: 300, y: 150, radius: 30, color: "#10b981", label: "A", scale: 1 },
+        { id: 1, type: "circle", x: 200, y: 250, radius: 30, color: "#f97316", label: "B", scale: 1 },
+        { id: 2, type: "circle", x: 400, y: 250, radius: 30, color: "#22d3ee", label: "C", scale: 1 },
+        { id: 3, type: "line", startX: 300, startY: 180, x: 220, y: 230, color: "#f97316", width: 3 },
+        { id: 4, type: "line", startX: 300, startY: 180, x: 380, y: 230, color: "#22d3ee", width: 2 },
+        { id: 5, type: "text", x: 300, y: 80, label: "DFS: Go Deep to B", color: "#f97316", size: 18 },
+      ],
+      actions: [{ objectId: 1, type: "highlight" }],
+    },
+  ];
+};
+
+const derivativeScenes = (): Scene[] => {
+  return [
+    {
+      id: 0,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "text", x: 300, y: 150, label: "f(x) = x²", color: "#22d3ee", size: 24 },
+        { id: 1, type: "line", startX: 150, startY: 250, x: 450, y: 250, color: "#22d3ee", width: 2 },
+        { id: 2, type: "circle", x: 250, y: 250, radius: 8, color: "#f97316", label: "", scale: 1 },
+      ],
+      actions: [{ objectId: 0, type: "fadeIn" }],
+    },
+    {
+      id: 1,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "text", x: 300, y: 150, label: "f'(x) = 2x", color: "#10b981", size: 24 },
+        { id: 1, type: "line", startX: 150, startY: 300, x: 450, y: 200, color: "#10b981", width: 3 },
+        { id: 3, type: "text", x: 300, y: 100, label: "Derivative: Slope", color: "#10b981", size: 18 },
+      ],
+      actions: [{ objectId: 1, type: "fadeIn" }],
+    },
+  ];
+};
+
+const factorialScenes = (): Scene[] => {
+  return [
+    {
+      id: 0,
+      duration: 1500,
+      objects: [
+        { id: 0, type: "text", x: 300, y: 150, label: "5!", color: "#22d3ee", size: 32 },
+        { id: 1, type: "text", x: 300, y: 200, label: "= 5 × 4 × 3 × 2 × 1", color: "#22d3ee", size: 18 },
+      ],
+      actions: [{ objectId: 0, type: "fadeIn" }],
+    },
+    {
+      id: 1,
+      duration: 2000,
+      objects: [
+        { id: 0, type: "text", x: 300, y: 150, label: "5! = 120", color: "#10b981", size: 32 },
+        { id: 2, type: "circle", x: 300, y: 220, radius: 60, color: "#10b98188", label: "120", scale: 1 },
+      ],
+      actions: [{ objectId: 2, type: "scale", toScale: 1 }],
     },
   ];
 };

@@ -17,10 +17,17 @@ interface HeroSectionProps {
 
 const EXAMPLE_PROMPTS = [
   "bubble sort 6 numbers",
+  "merge sort algorithm",
+  "quick sort visualization",
+  "linked list insert node",
+  "stack push and pop",
+  "breadth first search",
   "vector addition",
   "Pythagoras theorem",
-  "binary search tree insert [1,5,3]",
+  "binary search tree insert",
   "matrix 2x2 multiply",
+  "derivative visualization",
+  "factorial animation",
 ];
 
 export const HeroSection = ({ onGenerate, isGenerating }: HeroSectionProps) => {
@@ -96,11 +103,12 @@ export const HeroSection = ({ onGenerate, isGenerating }: HeroSectionProps) => {
         </div>
 
         {/* Features */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-8">
           {[
-            { icon: "⚡", title: "Instant Generation", desc: "Scene JSON in ~800ms" },
-            { icon: "🎨", title: "5+ Templates", desc: "Sort, vectors, graphs & more" },
-            { icon: "📹", title: "Smooth Playback", desc: "Canvas-based animation" },
+            { icon: "⚡", title: "Instant", desc: "Scene JSON in ~800ms" },
+            { icon: "🎨", title: "15+ Templates", desc: "Sort, graphs, math & more" },
+            { icon: "📹", title: "Smooth Canvas", desc: "60fps animations" },
+            { icon: "💾", title: "Export GIF", desc: "Download animations" },
           ].map((feature, i) => (
             <div
               key={i}

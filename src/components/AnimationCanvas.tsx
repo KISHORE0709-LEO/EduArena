@@ -4,9 +4,10 @@ import { Scene } from "@/pages/Index";
 interface AnimationCanvasProps {
   scenes: Scene[];
   isPlaying: boolean;
+  speed?: number;
 }
 
-export const AnimationCanvas = ({ scenes, isPlaying }: AnimationCanvasProps) => {
+export const AnimationCanvas = ({ scenes, isPlaying, speed = 1 }: AnimationCanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [currentScene, setCurrentScene] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -24,7 +25,8 @@ export const AnimationCanvas = ({ scenes, isPlaying }: AnimationCanvasProps) => 
 
     const animate = () => {
       const elapsed = Date.now() - startTime;
-      const sceneProgress = Math.min(elapsed / scene.duration, 1);
+      const adjustedDuration = scene.duration / speed;
+      const sceneProgress = Math.min(elapsed / adjustedDuration, 1);
       setProgress(sceneProgress);
 
       // Clear canvas
@@ -50,7 +52,7 @@ export const AnimationCanvas = ({ scenes, isPlaying }: AnimationCanvasProps) => 
     return () => {
       if (animationFrame) cancelAnimationFrame(animationFrame);
     };
-  }, [scenes, currentScene, isPlaying]);
+  }, [scenes, currentScene, isPlaying, speed]);
 
   return (
     <div className="relative w-full h-[400px] bg-background/50 flex items-center justify-center">
