@@ -5,12 +5,32 @@ interface AnimationCanvasProps {
   scenes: Scene[];
   isPlaying: boolean;
   speed?: number;
+  videoUrl?: string;
 }
 
-export const AnimationCanvas = ({ scenes, isPlaying, speed = 1 }: AnimationCanvasProps) => {
+export const AnimationCanvas = ({ scenes, isPlaying, speed = 1, videoUrl }: AnimationCanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [currentScene, setCurrentScene] = useState(0);
   const [progress, setProgress] = useState(0);
+
+  // If we have a video URL, show video instead of canvas animation
+  if (videoUrl) {
+    return (
+      <div className="relative w-full h-[400px] bg-background/50 flex items-center justify-center">
+        <video
+          ref={videoRef}
+          src={videoUrl}
+          controls
+          autoPlay
+          className="max-w-full max-h-full"
+          style={{ maxWidth: '600px', maxHeight: '400px' }}
+        >
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    );
+  }
 
   useEffect(() => {
     if (!canvasRef.current || !isPlaying || scenes.length === 0) return;
