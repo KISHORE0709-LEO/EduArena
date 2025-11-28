@@ -1,8 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:D:/Kishore/New_project/EduArena/backend/media/videos/simple_manim/480p15/partial_movie_files/BernoulliScene/1185818338_923220551_223132457.mp4'
-file 'file:D:/Kishore/New_project/EduArena/backend/media/videos/simple_manim/480p15/partial_movie_files/BernoulliScene/624642324_132384735_1210249129.mp4'
-file 'file:D:/Kishore/New_project/EduArena/backend/media/videos/simple_manim/480p15/partial_movie_files/BernoulliScene/624642324_3999606286_565681177.mp4'
-file 'file:D:/Kishore/New_project/EduArena/backend/media/videos/simple_manim/480p15/partial_movie_files/BernoulliScene/624642324_3007817399_201623324.mp4'
-file 'file:D:/Kishore/New_project/EduArena/backend/media/videos/simple_manim/480p15/partial_movie_files/BernoulliScene/624642324_4050474981_2757172185.mp4'
-file 'file:D:/Kishore/New_project/EduArena/backend/media/videos/simple_manim/480p15/partial_movie_files/BernoulliScene/624642324_4130620748_3887667478.mp4'
-file 'file:D:/Kishore/New_project/EduArena/backend/media/videos/simple_manim/480p15/partial_movie_files/BernoulliScene/624642324_1734327179_1075867869.mp4'
